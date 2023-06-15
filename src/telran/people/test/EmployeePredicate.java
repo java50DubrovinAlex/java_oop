@@ -10,11 +10,17 @@ public class EmployeePredicate implements Predicate<Employee> {
 	private int salaryFrom;
 	private int salaryTo;
 	private String department;
+	private Integer id;
 	
 
 	public boolean testByAge(Employee t) {
 		
 		return t.getBirthYear() >= yearFrom && t.getBirthYear() <= yearTo;
+	}
+	
+public boolean testById(Employee t) {
+		
+		return t.getId() == id ;
 	}
 	
 public boolean testBySalary(Employee t) {
@@ -46,8 +52,11 @@ public boolean testByDepartment(Employee t) {
 	}
 
 	public EmployeePredicate(String department) {
-		super();
 		this.department = department;
+	}
+
+	public EmployeePredicate(int id) {
+		this.id = id;
 	}
 
 	

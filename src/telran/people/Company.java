@@ -65,6 +65,7 @@ public class Company {
 	
 	public boolean addEmployee(Employee employee) {
 		boolean res = false;
+		Arrays.sort(employees, Comparator.comparingInt(Employee::getId));
 		int index = Arrays.binarySearch(employees, employee, Comparator.comparingInt(Employee::getId));
 		if (index < 0) {
 	        index = -(index + 1); 
@@ -75,5 +76,30 @@ public class Company {
 	    }
 	    return res;
 		
+	}
+	
+	public boolean removeEmployeesIf(Employee employee) {
+		boolean res = false;
+	    Arrays.sort(employees, Comparator.comparingInt(Employee::getId));
+	    int i = Arrays.binarySearch(employees, employee, Comparator.comparingInt(Employee::getId));
+	    if (i >= 0) {
+	        System.arraycopy(employees, i + 1, employees, i, employees.length - i - 1);
+	        employees = Arrays.copyOf(employees, employees.length - 1);
+	        res = true;
+	    }
+
+	    return res;
+	    
+	}
+	
+	public Employee getEmployee(int id) {
+		Employee res = null;
+		for(int i = 0; i < employees.length;i++) {
+			if(employees[i].getId() == id) {
+				res = employees[i];
+			}
+			
+		}
+		return res;
 	}
 }
