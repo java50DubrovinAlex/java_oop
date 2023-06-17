@@ -8,15 +8,9 @@ public class Calculator {
 		Double b = cd.getOp2();
 		Character operation = cd.getOperation();
 		
-		BinaryOperator<Double>[] operators = new BinaryOperator[48];
+		Operator operators = new Operator();
 		
-        operators['+'] = (op1, op2) -> op1 + op2;
-        operators['-'] = (op1, op2) -> op1 - op2;
-        operators['*'] = (op1, op2) -> op1 * op2;
-        operators['/'] = (op1, op2) -> op1 / op2;
-        operators['%'] = (op1, op2) -> op1 % op2;
-		
-        BinaryOperator<Double> calc = operators[operation];
+        BinaryOperator<Double> calc = operators.getOperator(operation);
 		Double res = calc.apply(a, b);
 				
 		return res;
