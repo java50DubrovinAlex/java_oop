@@ -18,9 +18,7 @@ class ShapeTest {
 		canvasTest.addShape(new Square(2));
 		canvasTest.addShape(new Rectangle(2, 3));
 		canvasTest.addShape(new Rectangle(2, 4));
-		canvasTest2 = new Canvas();
-		canvasTest2.addShape(new Square(4));
-		canvasTest.addShape(canvasTest2);
+		
 		
 		
 	}
@@ -57,6 +55,9 @@ class ShapeTest {
 	}
 	@Test
 	void removeNestedCanvasesTest() {
+		canvasTest2 = new Canvas();
+		canvasTest2.addShape(new Square(4));
+		canvasTest.addShape(canvasTest2);
 		boolean isRemove = canvasTest.removeNestedCanvases();
 		assertTrue(isRemove);
 	}
